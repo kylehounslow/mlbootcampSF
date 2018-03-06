@@ -53,7 +53,7 @@ docker-compose --version
 ```
 ### Step 3 - Clone the MLBootcamp git repo
 ```sh
-git clone https://github.com/kylehounslow/mlbootcamp.git
+git clone https://github.com/kylehounslow/mlbootcampSF.git
 export ML_BOOTCAMP_DIR=$PWD/mlbootcamp
 ```
 ### Step 4 - Pull the MLBootcamp Docker image
@@ -92,7 +92,7 @@ Follow the instructions found [here](https://docs.docker.com/docker-for-mac/inst
 
 ### Step 3 - Clone the MLBootcamp git repo
 ```sh
-git clone https://github.com/kylehounslow/mlbootcamp.git
+git clone https://github.com/kylehounslow/mlbootcampSF.git
 export ML_BOOTCAMP_DIR=$PWD/mlbootcamp
 ```
 ### Step 4 - Pull the MLBootcamp Docker image
@@ -133,7 +133,7 @@ Follow the instructions found [here](https://docs.docker.com/toolbox/toolbox_ins
 Open Git Bash, copy and and right-click-->Paste the following command:
 ```sh
 cd ~
-git clone https://github.com/kylehounslow/mlbootcamp.git
+git clone https://github.com/kylehounslow/mlbootcampSF.git
 
 ```
 The repository should now be located at `C:/Users/YourUserName/mlbootcamp`.  
@@ -174,7 +174,7 @@ docker pull kylehounslow/mlbootcamp:latest
 In the Docker CLI tool, copy and right-click-->Paste the following:  
 ```sh
 # change to directory containing code
-cd ~/mlbootcamp
+cd ~/mlbootcampSF
 # launch jupyter notebook in docker
 docker-compose up
 

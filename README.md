@@ -1,6 +1,3 @@
-# mlbootcampSF  
-Machine Learning Bootcamp
-
 # Installation Instructions
 Here we will set up our work environment to launch Jupyter notebooks from a Docker container.  
 

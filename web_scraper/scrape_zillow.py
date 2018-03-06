@@ -68,7 +68,7 @@ def parse(zipcode, filter=None):
     # 	print ("Failed to process the page",url)
 
 
-def try_all_sf_area_codes():
+def try_all_sf_area_codes(output_folder):
     zipcodes = [94102,
              94104,
              94103,
@@ -109,35 +109,20 @@ def try_all_sf_area_codes():
         print ("Fetching data for %s" % (zipcode))
         scraped_data = parse(str(zipcode), sort)
         print ("Writing data to output file")
-        with open("output/properties-%s.csv" % (zipcode), 'wb')as csvfile:
+        with open(f"{output_folder}/properties-{zipcode}.csv", 'wb')as csvfile:
             fieldnames = ['title', 'address', 'city', 'state', 'postal_code', 'price', 'facts and features',
                           'real estate provider', 'url']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             for row in scraped_data:
                 writer.writerow(row)
-
 if __name__ == "__main__":
-    # argparser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
-    # argparser.add_argument('zipcode', help='')
-    # sortorder_help = """
-    # available sort orders are :
-    # newest : Latest property details,
-    # cheapest : Properties with cheapest price
-    # """
-    # argparser.add_argument('sort', nargs='?', help=sortorder_help, default='Homes For You')
-    # args = argparser.parse_args()
-    # zipcode = args.zipcode
-    # sort = args.sort
-    # print ("Fetching data for %s" % (zipcode))
-    # scraped_data = parse(zipcode, sort)
-    # print ("Writing data to output file")
-    # with open("properties-%s.csv" % (zipcode), 'wb')as csvfile:
-    #     fieldnames = ['title', 'address', 'city', 'state', 'postal_code', 'price', 'facts and features',
-    #                   'real estate provider', 'url']
-    #     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    #     writer.writeheader()
-    #     for row in scraped_data:
-    #         writer.writerow(row)
+    import os
+    argparser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
+    argparser.add_argument('output_folder', help='')
+    args = argparser.parse_args()
+    output_folder = args.output_folder
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    try_all_sf_area_codes(output_folder=output_folder)
 
-    try_all_sf_area_codes()

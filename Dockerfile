@@ -44,3 +44,16 @@ RUN apt-get clean autoclean && \
 # notebook env setup
 EXPOSE 8888
 ENV PYTHONPATH=/home/digitalist
+
+# flask env setup
+EXPOSE 5000
+
+# start jupyter on docker run
+CMD /usr/local/bin/jupyter-notebook \
+--no-browser \
+--port=8888 \
+--ip=0.0.0.0 \
+--allow-root
+
+WORKDIR /home/digitalist
+

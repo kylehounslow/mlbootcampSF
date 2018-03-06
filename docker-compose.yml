@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mlbootcamp:
+    image: "kylehounslow/mlbootcamp:latest"
+    ports:
+     - "$API_PORT:$API_PORT"
+     - "$JUPYTER_PORT:$JUPYTER_PORT"
+    volumes:
+     - $PWD:/home/digitalist
+    #entrypoint: /bin/bash 
+    command: /usr/local/bin/jupyter-notebook  --no-browser --port=$JUPYTER_PORT --ip=0.0.0.0 --allow-root
+    environment:
+     - API_PORT=$API_PORT
+

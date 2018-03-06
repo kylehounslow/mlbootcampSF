@@ -11,3 +11,8 @@ seaborn
 geojson
 tqdm
 tf-nightly
+flask 
+flask-restplus
+requests
+jsonpickle
+

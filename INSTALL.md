@@ -14,7 +14,7 @@ Open a bash terminal and execute the following:
 ```sh
 sudo apt-get install -y git
 ```
-### Step 2 - Install Docker
+### Step 2a - Install Docker
 You can follow the instructions found [here](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-docker-ce-1), otherwise see below:
 #### Ubuntu 14.04 (Trusty)
 add below script in addition to the 16.04 script:
@@ -33,7 +33,26 @@ sudo apt-get update
 sudo apt-get install -y docker-ce
 sudo service docker restart
 ```
+### Step 2b - Install Docker-Compose
+**Follow instructions [here](https://docs.docker.com/compose/install/) or see below:**  
 
+download latest docker-compose binary
+```sh
+sudo curl -L \
+https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname \
+-s`-`uname \
+-m` \
+-o /usr/local/bin/docker-compose
+
+```
+make docker-compose executable
+```sh
+sudo chmod +x /usr/local/bin/docker-compose
+```
+verify install (should produce output resembling: "`docker-compose version 1.19.0, build 9e633ef`")
+```sh
+docker-compose --version
+```
 ### Step 3 - Clone the MLBootcamp git repo
 ```sh
 git clone https://github.com/kylehounslow/mlbootcamp.git
@@ -46,21 +65,8 @@ docker pull kylehounslow/mlbootcamp:latest
 ### Step 5 - Launch a Jupyter Notebook within the `mlbootcamp` Docker container
 ```sh
 cd $ML_BOOTCAMP_DIR
-# set your preferred port
-PORT=8888
-# launch jupyter notebook
-sudo docker run \
---rm \
--it \
--v $ML_BOOTCAMP_DIR:/home/digitalist \
--p $PORT:$PORT \
--w /home/digitalist/notebooks \
-kylehounslow/mlbootcamp:latest \
-/usr/local/bin/jupyter-notebook \
---no-browser \
---port=$PORT \
---ip=0.0.0.0 \
---allow-root
+# launch jupyter notebook in docker
+docker-compose up
 ```
 If successful, the jupyter notebook will be served to a URL as shown below. Copy and paste the url to your browser.
 ```sh
@@ -97,22 +103,10 @@ sudo docker pull kylehounslow/mlbootcamp:latest
 ```
 ### Step 5 - Launch a Jupyter Notebook within the `mlbootcamp` Docker container
 ```sh
+# change to directory containing code
 cd $ML_BOOTCAMP_DIR
-# set your preferred port
-PORT=8888
-# launch jupyter notebook
-sudo docker run \
---rm \
--it \
--v $ML_BOOTCAMP_DIR:/home/digitalist \
--p $PORT:$PORT \
--w /home/digitalist/notebooks \
-kylehounslow/mlbootcamp:latest \
-/usr/local/bin/jupyter-notebook \
---no-browser \
---port=$PORT \
---ip=0.0.0.0 \
---allow-root
+# launch jupyter notebook in docker
+docker-compose up
 ```
 If successful, the jupyter notebook will be served to a URL as shown below. Copy and paste the url to your browser.
 ```sh
@@ -181,16 +175,10 @@ docker pull kylehounslow/mlbootcamp:latest
 ### Step 6 - Launch a Jupyter Notebook within the `mlbootcamp` Docker container
 In the Docker CLI tool, copy and right-click-->Paste the following:  
 ```sh
+# change to directory containing code
 cd ~/mlbootcamp
-PORT=8888
-docker run \
---rm \
--it \
--v \
-$PWD:/home/digitalist \
--w /home/digitalist/notebooks \
--p $PORT:$PORT kylehounslow/mlbootcamp:latest \
-/usr/local/bin/jupyter-notebook --no-browser --port=$PORT --ip=0.0.0.0 --allow-root
+# launch jupyter notebook in docker
+docker-compose up
 
 ```
 If successful, the jupyter notebook will be served to a URL as shown below.  

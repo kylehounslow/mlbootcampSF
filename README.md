@@ -134,7 +134,7 @@ cd ~
 git clone https://github.com/kylehounslow/mlbootcampSF.git
 
 ```
-The repository should now be located at `C:/Users/YourUserName/mlbootcamp`.  
+The repository should now be located at `C:/Users/YourUserName/mlbootcampSF`.  
 ### Step 4 - Copy the Docker IP Address (Windows Only)  
 Open the Docker Quickstart Terminal. It will automatically install VirtualBox VM and launch the Docker CLI tool.  
 Once the CLI Tool is initialized, you will see a Whale image along with an IP address. This IP address is important since we will need it to access our Jupyter notebook.  
@@ -158,7 +158,7 @@ Start interactive shell
 khoun@DESKTOP-3S60RT0 MINGW64 ~
 $
 ```
-In the above example the IP address is **192.168.99.100**. Please write this down or copy it to a text file for use in Step 7.
+In the above example the IP address is **`192.168.99.100`**. Please write this down or copy it to a text file for use in Step 7.
 ### Step 5 - Pull the MLBootcamp Docker image
 Open the Docker Quickstart Terminal. It will automatically install VirtualBox VM and launch the Docker CLI tool.  
 
@@ -172,7 +172,7 @@ docker pull kylehounslow/mlbootcamp:latest
 In the Docker CLI tool, copy and right-click-->Paste the following:  
 ```sh
 # change to directory containing code
-cd ~/mlbootcamp
+cd ~/mlbootcampSF
 # launch jupyter notebook in docker
 docker-compose up
 
@@ -181,19 +181,16 @@ If successful, the jupyter notebook will be served to a URL as shown below.
 In Windows we cannot simply copy the URL since it is running in a VirtualBox on top of Windows.  
 *Instead* we will need to copy the generated token at the end of the URL.  
 ```sh
-[I 21:19:15.056 NotebookApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
-[I 21:19:15.341 NotebookApp] Serving notebooks from local directory: /
-[I 21:19:15.341 NotebookApp] 0 active kernels
-[I 21:19:15.341 NotebookApp] The Jupyter Notebook is running at:
-[I 21:19:15.341 NotebookApp] http://0.0.0.0:8888/?token=c07276cd245086f751443f74e594f788298ddd24c87dfef4
-[I 21:19:15.341 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[C 21:19:15.342 NotebookApp] 
-    
-    Copy/paste this URL into your browser when you connect for the first time,
-    to login with a token:
-        http://0.0.0.0:8888/?token=c07276cd245086f751443f74e594f788298ddd24c87dfef4
+Recreating mlbootcampsf_mlbootcamp_1 ... done
+Attaching to mlbootcampsf_mlbootcamp_1
+mlbootcamp_1  | [I 22:49:04.292 NotebookApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
+mlbootcamp_1  | [I 22:49:04.648 NotebookApp] Serving notebooks from local directory: /home/digitalist
+mlbootcamp_1  | [I 22:49:04.649 NotebookApp] 0 active kernels
+mlbootcamp_1  | [I 22:49:04.649 NotebookApp] The Jupyter Notebook is running at:
+mlbootcamp_1  | [I 22:49:04.650 NotebookApp] http://0.0.0.0:8888/?token=978738149619480d2c9b820764c683e45098784efcb56681
+mlbootcamp_1  | [I 22:49:04.650 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 ```
-Copy the generated token to a text file (in the above example the token is **c07276cd245086f751443f74e594f788298ddd24c87dfef4**)
+Copy the generated token to a text file (in the above example the token is **978738149619480d2c9b820764c683e45098784efcb56681**)
 
 ### Step 7 - Open a Browser and Navigate to our Docker IP Address at port 8888 (Windows Only)
 Recall from step 4 we copied the IP address of the Docker container (eg. 192.168.99.100).  
